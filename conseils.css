@@ -1,0 +1,171 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+    color: #444;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+}
+
+td img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+td p {
+    margin: 5px 0;
+}
+
+td:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+td:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    table, td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        margin-bottom: 10px;
+    }
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    color: blue;
+    align-items: center;
+    font-weight: bold;
+    margin: 0;
+}
+
+header .logo {
+    width: 200px; /* Taille agrandie */
+    height: auto;
+}
+
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: skyblue;
+    color: black;
+    text-decoration: none;
+}
+
+nav ul li a.active {
+    background-color: skyblue;
+    color: black;
+    font-weight: bold;
+}
+
+section {
+    flex: 1;
+    padding: 40px 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+section p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+section ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+
+section ul li strong {
+    color: #000;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+footer a {
+    color: #333;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
