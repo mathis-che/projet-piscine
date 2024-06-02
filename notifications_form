@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        h2 {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            font-size: 18px;
+            background-color: white;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="file"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357ABD;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4a90e2;
+            padding: 20px;
+            color: white;
+        }
+
+        header h1 {
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 50px;
+            width: 50%;
+            padding: 10px;
+        }
+
+        header .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        section {
+            flex: 1;
+    padding: 40px 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        footer a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+    <script>
+        function showCategoryQuestions() {
+            var category = document.getElementById("categorie").value;
+            var categories = ["electroniqueQuestions", "modeQuestions", "artQuestions"];
+            categories.forEach(function (cat) {
+                document.getElementById(cat).style.display = "none";
+            });
+            if (category === "Electronique") {
+                document.getElementById("electroniqueQuestions").style.display = "table-row-group";
+            } else if (category === "Mode") {
+                document.getElementById("modeQuestions").style.display = "table-row-group";
+            } else if (category === "Art") {
+                document.getElementById("artQuestions").style.display = "table-row-group";
+            }
+
+            // Afficher l'alerte
+            document.getElementById("alerte").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>Agora Francia</h1>
+        <img src="logo.png" alt="Logo du site" class="logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="code_mathis1.php">Accueil</a></li>
+            <li><a href="code_mathis2.php">Tout parcourir</a></li>
+            <li><a href="notif_quentin_code.php">Notifications</a></li>
+            <li><a href="panier.html">Panier</a></li>
+            <li><a href="votre_compte.html">Votre compte</a></li>
+        </ul>
+    </nav>
+</div>
+<section>
+<h2>Activez les Notifications !</h2>
+<form id="rechercheForm" action="mieux_presenter.php" method="post">
+    <table border="1">
+        <tr>
+            <td colspan="2" align="center"><b>Quel produit recherchez-vous ?</b></td>
+        </tr>
+        <tr>
+            <td>Nom </td>
+            <td><input type="text" name="nom" id="nom"></td>
+        </tr>
+        <tr>
+            <td>Catégorie</td>
+            <td>
+                <select name="categorie" id="categorie" onchange="showCategoryQuestions()">
+                    <option value="Electronique">Electronique</option>
+                    <option value="Mode">Mode</option>
+                    <option value="Art">Art</option>
+                </select>
+            </td>
+        </tr>
+        <!-- Electronique -->
+        <tbody id="electroniqueQuestions" style="display: table-row-group;">
+        <tr>
+            <td>Prix max</td>
+            <td><input type="number" name="prix_elec"></td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td><input type="text" name="type"></td>
+        </tr>
+        <tr>
+            <td>Couleur</td>
+            <td><input type="text" name="couleur"></td>
+        </tr>
+        </tbody>
+        <!-- Mode -->
+        <tbody id="modeQuestions" style="display: none;">
+        <tr>
+            <td>Vêtement</td>
+            <td><input type="text" name="vetement"></td>
+        </tr>
+        <tr>
+            <td>Prix Max</td>
+            <td><input type="number" name="prix_mode"></td>
+        </tr>
+        <tr>
+            <td>Qualité</td>
+            <td><input type="text" name="qualite"></td>
+        </tr>
+        <tr>
+            <td>Taille</td>
+            <td><input type="text" name="taille"></td>
+        </tr>
+        </tbody>
+        <!-- Art -->
+        <tbody id="artQuestions" style="display: none;">
+        <tr>
+            <td>Prix max</td>
+            <td><input type="number" name="prix_art"></td>
+        </tr>
+        <tr>
+            <td>Année Découverte min</td>
+            <td><input type="number" name="date_dec"></td>
+        </tr>
+        </tbody>
+        <tr>
+            <td>Votre e-mail</td>
+            <td><input type="email" name="email" required></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+
+            <input  type="submit" name="Rechercher" value="Rechercher" onclick="showCategoryQuestions();"> 
+
+            </td>
+        </tr>
+    </table>
+    <!-- Champ caché pour l'ID utilisateur -->
+    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+    <!-- <div id="alerte" class="alert" style="display: none;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        Critère enregistré avec succès !
+    </div> -->
+    
+</form>
+    </section>
+<footer>
+    <p>Contact: <a href="mailto:info@agorafrancia.fr">info@agorafrancia.fr</a></p>
+    <p>&copy; 2024 Agora Francia</p>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
