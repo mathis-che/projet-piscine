@@ -6,162 +6,162 @@
     <title>Tout Parcourir - Agora Francia</title>
     <style> 
         * {
-    box-sizing: border-box;
-}
+            box-sizing: border-box;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-header {
-    background-color: #003f5c;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        header {
+            background-color: #003f5c;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-header h1 {
-    margin: 0;
-    font-size: 1.5rem;
-}
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
 
-.logo {
-    max-width: 100%;
-    max-height: 3rem;
-}
+        .logo {
+            max-width: 100%;
+            max-height: 3rem;
+        }
 
-nav {
-    background-color: #2f4f4f;
-    padding: 0.5rem;
-    display: flex;
-    justify-content: space-around;
-}
+        nav {
+            background-color: #2f4f4f;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-around;
+        }
 
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-}
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
 
-nav li {
-    margin: 0 0.5rem;
-}
+        nav li {
+            margin: 0 0.5rem;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem;
-    display: block;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+        }
 
-nav a:hover {
-    background-color: #003f5c;
-}
+        nav a:hover {
+            background-color: #003f5c;
+        }
 
-section {
-    padding: 2rem;
-    flex-grow: 1;
-}
+        section {
+            padding: 2rem;
+            flex-grow: 1;
+        }
 
-h2 {
-    margin-top: 0;
-}
+        h2 {
+            margin-top: 0;
+        }
 
-.article {
-    background-color: #f4f4f4;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-}
+        .article {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-.article-img {
-    max-width: 100%;
-    height: auto;
-    margin-right: 1rem;
-}
+        .article-img {
+            max-width: 100%;
+            height: auto;
+            margin-right: 1rem;
+        }
 
-.article p {
-    margin: 0;
-    flex-basis: 100%;
-}
+        .article p {
+            margin: 0;
+            flex-basis: 100%;
+        }
 
-.bid-button,
-.buy-button {
-    background-color: #003f5c;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    margin-top: 0.5rem;
-}
+        .bid-button,
+        .buy-button {
+            background-color: #003f5c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
 
-.bid-button:hover,
-.buy-button:hover {
-    background-color: #2f4f4f;
-}
+        .bid-button:hover,
+        .buy-button:hover {
+            background-color: #2f4f4f;
+        }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
 
-.modal-content {
-    background-color: #f4f4f4;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-}
+        .modal-content {
+            background-color: #f4f4f4;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
 
-.close-button {
-    color: #003f5c;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .close-button {
+            color: #003f5c;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-.submit-button {
-    background-color: #003f5c;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    margin-top: 0.5rem;
-}
+        .submit-button {
+            background-color: #003f5c;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
 
-.submit-button:hover {
-    background-color: #2f4f4f;
-}
+        .submit-button:hover {
+            background-color: #2f4f4f;
+        }
 
-footer {
-    background-color: #2f4f4f;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    flex-shrink: 0;
-}
-</style>
+        footer {
+            background-color: #2f4f4f;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -188,7 +188,7 @@ footer {
             $servername = "localhost";
             $username = "root";
             $password = "root";
-            $dbname = "agorafrancia";
+            $dbname = "projet";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -243,7 +243,7 @@ footer {
             $servername = "localhost";
             $username = "root";
             $password = "root";
-            $dbname = "agorafrancia";
+            $dbname = "projet";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -272,147 +272,162 @@ footer {
             ?>
         </section>
         <footer>
-            <p>Contact: <a href="mailto:info@agorafrancia.fr">info@agorafrancia.fr</a></p>
-            <p>&copy; 2024 Agora Francia</p>
+            <ul>
+                <li>Contact: <a href="contact.php">info@agorafrancia.fr</a></li>
+                <li>Tel : 01.02.03.04.05</li>
+            </ul>
+            <ul>
+                <li>Adresse : 37 Quai de Grenelle </li>
+                <li>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.351862863769!2d2.2872323999999997!3d48.8515004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6700497ee3ec5%3A0xdd60f514adcdb346!2s37%20Quai%20de%20Grenelle%2C%2075015%20Paris!5e0!3m2!1sfr!2sfr!4v1716902771892!5m2!1sfr!2sfr"
+                            width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </li>
+                <li>&copy; 2024 Agora Francia</li>
+            </ul>
         </footer>
     </div>
 
     <script>
-function openBidForm(articleId) {
-    document.getElementById('bidForm').style.display = 'block';
-    document.getElementById('articleId').value = articleId;
-}
-
-function closeBidForm() {
-    document.getElementById('bidForm').style.display = 'none';
-    // Recharger la page pour mettre à jour les prix des enchères
-    window.location.reload(true);
-}
-
-document.getElementById('bidFormContent').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var formData = new FormData(this);
-
-    fetch('submit_bid.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        // Vérifier si la réponse est un nombre valide
-        if (!isNaN(parseFloat(data))) {
-            // Mettre à jour la variable contenant le prix aux enchères
-            var newPrice = parseFloat(data);
-
-            alert('Votre offre a été soumise pour ' + document.getElementById('articleId').value + ' avec une valeur de ' + document.getElementById('bidValue').value + '€');
-            closeBidForm();
-        } else {
-            // Afficher un message d'erreur si la réponse n'est pas un nombre valide
-            alert('Erreur: Veuillez entrer une offre valide.');
+        function openBidForm(articleId) {
+            document.getElementById('bidForm').style.display = 'block';
+            document.getElementById('articleId').value = articleId;
         }
-    })
-    .catch(error => console.error('Erreur:', error));
-});
 
-function buyNow(articleId) {
-    fetch('buy_now.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'articleId=' + articleId
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        window.location.reload();
-    })
-    .catch(error => console.error('Erreur:', error));
-}
-
-function addToCart(articleId, typeVente) {
-    fetch('add_to_cart.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'articleId=' + articleId + '&typeVente=' + typeVente + '&userId=1' // Remplacez 1 par l'ID de l'utilisateur connecté
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        window.location.reload();
-    })
-    .catch(error => console.error('Erreur:', error));
-}
-
-function updateTimer() {
-    // Récupérer tous les éléments contenant le timer
-    var timers = document.querySelectorAll('.timer');
-
-    // Pour chaque élément timer, mettre à jour le temps restant
-    timers.forEach(function(timerElement) {
-        // Récupérer le temps restant de l'attribut data-timer
-        var remainingTime = parseInt(timerElement.getAttribute('data-timer'));
-
-        // Vérifier si le temps restant est supérieur à zéro
-        if (remainingTime > 0) {
-            // Calculer les heures, minutes et secondes restantes
-            var hours = Math.floor(remainingTime / 3600);
-            var minutes = Math.floor((remainingTime % 3600) / 60);
-            var seconds = remainingTime % 60;
-
-            // Formater le temps en HH:MM:SS
-            var formattedTime = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
-
-            // Mettre à jour le texte de l'élément timer avec le nouveau temps
-            timerElement.textContent = formattedTime;
-
-            // Décrémenter le temps restant de 1 seconde
-            remainingTime--;
-
-            // Mettre à jour l'attribut data-timer avec le nouveau temps restant
-            timerElement.setAttribute('data-timer', remainingTime);
-        } else {
-            // Si le temps est écoulé, afficher "Expiré" et mettre à jour la base de données
-            timerElement.textContent = 'Expiré';
-            var articleId = timerElement.getAttribute('data-article-id');
-
-            addToCartOnExpire(articleId);
-
-            // Envoyer une requête AJAX pour mettre à jour la base de données
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'update_expired_status.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send('articleId=' + articleId);
+        function closeBidForm() {
+            document.getElementById('bidForm').style.display = 'none';
+            // Recharger la page pour mettre à jour les prix des enchères
+            window.location.reload(true);
         }
-    });
-}
+
+        document.getElementById('bidFormContent').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('submit_bid.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Vérifier si la réponse est un nombre valide
+                if (!isNaN(parseFloat(data))) {
+                    // Mettre à jour la variable contenant le prix aux enchères
+                    var newPrice = parseFloat(data);
+
+                    alert('Votre offre a été soumise pour ' + document.getElementById('articleId').value + ' avec une valeur de ' + document.getElementById('bidValue').value + '€');
+                    closeBidForm();
+                } else {
+                    // Afficher un message d'erreur si la réponse n'est pas un nombre valide
+                    alert('Erreur: Veuillez entrer une offre valide.');
+                }
+            })
+            .catch(error => console.error('Erreur:', error));
+        });
+
+        function buyNow(articleId) {
+            fetch('buy_now.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'articleId=' + articleId
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                window.location.reload();
+            })
+            .catch(error => console.error('Erreur:', error));
+        }
+
+        function addToCart(articleId, typeVente) {
+            fetch('add_to_cart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'articleId=' + articleId + '&typeVente=' + typeVente + '&userId=1' // Remplacez 1 par l'ID de l'utilisateur connecté
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                window.location.reload();
+            })
+            .catch(error => console.error('Erreur:', error));
+        }
+
+        function updateTimer() {
+            // Récupérer tous les éléments contenant le timer
+            var timers = document.querySelectorAll('.timer');
+
+            // Pour chaque élément timer, mettre à jour le temps restant
+            timers.forEach(function(timerElement) {
+                // Récupérer le temps restant de l'attribut data-timer
+                var remainingTime = parseInt(timerElement.getAttribute('data-timer'));
+
+                // Vérifier si le temps restant est supérieur à zéro
+                if (remainingTime > 0) {
+                    // Calculer les heures, minutes et secondes restantes
+                    var hours = Math.floor(remainingTime / 3600);
+                    var minutes = Math.floor((remainingTime % 3600) / 60);
+                    var seconds = remainingTime % 60;
+
+                    // Formater le temps en HH:MM:SS
+                    var formattedTime = ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
+
+                    // Mettre à jour le texte de l'élément timer avec le nouveau temps
+                    timerElement.textContent = formattedTime;
+
+                    // Décrémenter le temps restant de 1 seconde
+                    remainingTime--;
+
+                    // Mettre à jour l'attribut data-timer avec le nouveau temps restant
+                    timerElement.setAttribute('data-timer', remainingTime);
+                } else {
+                    // Si le temps est écoulé, afficher "Expiré" et mettre à jour la base de données
+                    timerElement.textContent = 'Expiré';
+                    var articleId = timerElement.getAttribute('data-article-id');
+
+                    addToCartOnExpire(articleId);
+
+                    // Envoyer une requête AJAX pour mettre à jour la base de données
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'update_expired_status.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.send('articleId=' + articleId);
+                }
+            });
+        }
 
 
-// Appeler la fonction updateTimer toutes les secondes
-setInterval(updateTimer, 1000);
+        // Appeler la fonction updateTimer toutes les secondes
+        setInterval(updateTimer, 1000);
 
 
-// Vérifier les enchères expirées toutes les 30 secondes
-setInterval(updateExpiredAuctions, 1000);
+        // Vérifier les enchères expirées toutes les 30 secondes
+        setInterval(updateExpiredAuctions, 1000);
 
-function addToCartOnExpire(articleId) {
-    console.log('Tentative d\'ajout de l\'article expiré au panier, ID:', articleId);
-    fetch('add_to_cart_on_expire.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'articleId=' + articleId
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log('Réponse de add_to_cart_on_expire:', data);
-        window.location.reload();
-    })
-    .catch(error => console.error('Erreur:', error));
-}
+        function addToCartOnExpire(articleId) {
+            console.log('Tentative d\'ajout de l\'article expiré au panier, ID:', articleId);
+            fetch('add_to_cart_on_expire.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'articleId=' + articleId
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Réponse de add_to_cart_on_expire:', data);
+                window.location.reload();
+            })
+            .catch(error => console.error('Erreur:', error));
+        }
 
 
 
