@@ -1,0 +1,328 @@
+<?php
+session_start();
+
+$conn = new mysqli('localhost', 'root', 'root', 'projet');
+
+if (empty($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+if (empty($_SESSION['user_id'])) {
+    $conte = 'Se connecter';
+} else {
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT rang FROM utilisateurs WHERE id_utilisateur = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $conte = 'Votre compte';
+    if ($row && ($row['rang'] == 2 || $row['rang'] == 3)) {
+        $conte1 = 1;
+    } else {
+        $conte1 = 2;
+    }
+
+    // Fermer la déclaration et la connexion
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="../css/principale.css">
+
+    <style>
+        
+
+        .alert {
+            padding: 20px;
+            background-color: green;
+            color: white;
+            margin-bottom: 15px;
+            opacity: 1;
+            transition: opacity 0.6s;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product-card {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+            width: 300px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .details {
+            padding: 15px;
+        }
+
+        .price {
+            color: #939292;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+         h3 {
+            text-align : center;
+            font-family: 'Lora', serif;
+            }
+         h2 {
+            margin-left:80px;
+            font-family: 'Lora', serif;
+            font-size:12px;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Agora Francia</h1>
+            <img src="../image/logo.png" alt="Logo du site" class="logo">
+        </header>
+        <nav>
+            <ul>
+                <li><a href="accueil.php">Accueil</a></li>
+                <li><a href="tout_parcourir.php">Tout parcourir</a></li>
+                <li><a href="notifications.php" class="active">Notifications</a></li>
+                <li><a href="panier.php">Panier</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn"><?php echo $conte; ?></a>
+                    <div class="dropdown-content">
+                        <?php
+                        if($conte1 == 1){
+                            echo '<a href="compte.php">profil</a>';
+                            echo '<a href="vente.php">Mise en vente</a>';
+                        } 
+                        elseif($conte1 == 2){
+                            echo '<a href="compte.php">profil</a>';
+                        } 
+                        else {
+                            echo '<a href="login.php">Acheteur</a>';
+                            echo '<a href="login_vendeur.php">Vendeur</a>';
+                        }
+                        ?>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <section>
+            
+<?php
+
+// Connexion à la base de données
+
+$database = "projet";
+$db_handle = mysqli_connect('localhost', 'root', 'root');
+$db_found = mysqli_select_db($db_handle, $database);
+
+$email = isset($_POST['email']) ? $_POST['email'] : "";
+$Categorie = isset($_POST['categorie']) ? $_POST['categorie'] : "";
+$Nom = isset($_POST['nom']) ? $_POST['nom'] : "";
+$rechercher = isset($_POST['Rechercher']) ? $_POST['Rechercher'] : "";
+
+// elec donnee
+$prix_max_elec = isset($_POST['prix_elec']) ? $_POST['prix_elec'] : "";
+$type = isset($_POST['type']) ? $_POST['type'] : "";
+$couleur = isset($_POST['couleur']) ? $_POST['couleur'] : "";
+
+// mode donnee
+$vetement = isset($_POST['vetement']) ? $_POST['vetement'] : "";
+$prix_max_mode = isset($_POST['prix_mode']) ? $_POST['prix_mode'] : "";
+$qualite = isset($_POST['qualite']) ? $_POST['qualite'] : "";
+$taille = isset($_POST['taille']) ? $_POST['taille'] : "";
+// art donnee
+$prix_max_art = isset($_POST['prix_art']) ? $_POST['prix_art'] : "";
+$date_decouverte = isset($_POST['date_dec']) ? $_POST['date_dec'] : "";
+
+//id
+
+$user_id = 1;
+
+if ($db_found) {
+    if ($rechercher == "Rechercher") {
+
+        // ART 
+        if ($Categorie == "Art") {
+            $sql = "INSERT INTO Notification2 (id_user, Nom, Prix, Date_Decouverte, Email)
+                    VALUES ('$user_id','$Nom', " . (empty($prix_max_art) ? 1000000 : "'$prix_max_art'") . ", " . (empty($date_decouverte) ? 0 : "'$date_decouverte'") . ", '$email')";
+        } elseif ($Categorie == "Mode") { //MODE
+            $sql = "INSERT INTO Notification2 (id_user, Nom, Prix, Qualite, Taille, Vetement, Email)
+                    VALUES ('$user_id','$Nom', " . (empty($prix_max_mode) ? 1000000 : "'$prix_max_mode'") . ", " . (empty($qualite) ? "'non précisé'" : "'$qualite'") . ", " . (empty($taille) ? "'non précisé'" : "'$taille'") . ", " . (empty($vetement) ? "'non précisé'" : "'$vetement'") . ", '$email')";
+        } elseif ($Categorie == "Electronique") { // ELECTRONIQUE
+            $sql = "INSERT INTO Notification2 (id_user, Nom, Prix, Couleur, Type_Appareil, Email)
+                    VALUES ('$user_id','$Nom', " . (empty($prix_max_elec) ? 1000000 : "'$prix_max_elec'") . ", " . (empty($couleur) ? "'non précisé'" : "'$couleur'") . ", " . (empty($type) ? "'non précisé'" : "'$type'") . ", '$email')";
+        } else {
+            echo "Catégorie non reconnue.";
+            exit;
+        }
+
+        // Exécuter la requête
+        if (mysqli_query($db_handle, $sql)) {
+            echo '<div class="alert"><span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> Notification enregistrée avec succès !</div>';
+        } else {
+            echo "Erreur : " . $sql . "<br>" . mysqli_error($db_handle);
+        }
+
+        // Rechercher les produits correspondants
+        $sqlRecherche = "SELECT DISTINCT 
+                    i.ID, 
+                    i.Nom, 
+                    i.Description, 
+                    i.Photo, 
+                    i.Prix, 
+                    i.Categorie, 
+                    i.Couleur, 
+                    i.Taille, 
+                    i.Type_Appareil, 
+                    i.Vetement, 
+                    i.Qualite, 
+                    i.Date_Decouverte 
+                FROM 
+                    Item i 
+                JOIN  
+                    Notification2 n  
+                ON  
+                    i.Categorie LIKE '$Categorie'";
+
+        if ($Categorie == "Art") { //Critere pour ART
+            if (!empty($prix_max_art)) {
+                $sqlRecherche .= " AND i.Prix <= $prix_max_art";
+            }
+            if (!empty($date_decouverte)) {
+                $sqlRecherche .= " AND i.Date_Decouverte LIKE '$date_decouverte'";
+            }
+
+        } elseif ($Categorie == "Mode") { //Critere pour MODE
+            if (!empty($prix_max_mode)) {
+                $sqlRecherche .= " AND i.Prix <= $prix_max_mode";
+            }
+            if (!empty($qualite)) {
+                $sqlRecherche .= " AND i.Qualite LIKE '$qualite'";
+            }
+            if (!empty($taille)) {
+                $sqlRecherche .= " AND i.Taille LIKE '$taille'";
+            }
+            if (!empty($vetement)) {
+                $sqlRecherche .= " AND i.Vetement LIKE '$vetement'";
+            }
+
+        } elseif ($Categorie == "Electronique") { // Critere pour ELECTRONIQUE
+            if (!empty($prix_max_elec)) {
+                $sqlRecherche .= " AND i.Prix <= $prix_max_elec";
+            }
+            if (!empty($couleur)) {
+                $sqlRecherche .= " AND i.Couleur LIKE '$couleur'";
+            }
+            if (!empty($type)) {
+                $sqlRecherche .= " AND i.Type_Appareil LIKE '$type'";
+            }
+        }
+
+        if (!empty($Nom)) {
+            $sqlRecherche .= " AND i.Nom LIKE '$Nom'";
+        }
+
+        $result = mysqli_query($db_handle, $sqlRecherche);
+        if (mysqli_num_rows($result) > 0) {
+            echo "<h2><u>Voici les produits qui sont disponibles pour le moment et qui correspondent aux critères :</u></h2>";
+            echo "<div class='product-list'>";
+            while ($data = mysqli_fetch_assoc($result)) {
+                echo "<div class='product-card'>";
+                echo "<img src='" . $data['Photo'] . "' alt='" . $data['Nom'] . "'>";
+                echo "<div class='details'>";
+                echo "<h3>" . $data['Nom'] . "</h3>";
+                echo "<p class='price'>" . $data['Prix'] . " €</p>";
+                if ($Categorie == "Art") {
+                    echo "<p>Date de découverte : " . $data['Date_Decouverte'] . "</p>";
+                } elseif ($Categorie == "Mode") {
+                    echo "<p>Qualité : " . $data['Qualite'] . "</p>";
+                    echo "<p>Taille : " . $data['Taille'] . "</p>";
+                    echo "<p>Vêtement : " . $data['Vetement'] . "</p>";
+                } elseif ($Categorie == "Electronique") {
+                    echo "<p>Couleur : " . $data['Couleur'] . "</p>";
+                    echo "<p>Type : " . $data['Type_Appareil'] . "</p>";
+                }
+                echo "</div>";
+                echo "</div>";
+            }
+            echo "</div>";
+            echo "<h3>Vous serez alerté sur <u>$email</u> lorsque de nouveaux produits apparaissent !</h3>";
+
+
+        } else {
+            echo "<h3>Aucun produit trouvé. <br>Vous serez alerté sur <u>$email</u> lorsque de nouveaux produits apparaissent ! </br></h3>";
+        }
+    }
+} else {
+    echo "Database not found";
+}
+
+// Fermeture de la connexion
+mysqli_close($db_handle);
+
+?>
+        </section>
+        <footer>
+            <ul>
+                <li>Contact: <a href="contact.php">info@agorafrancia.fr</a></li>
+                <li>Tel : 01.02.03.04.05</li>
+            </ul>
+            <ul>
+                <li>Adresse : 37 Quai de Grenelle </li>
+                <li>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.351862863769!2d2.2872323999999997!3d48.8515004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6700497ee3ec5%3A0xdd60f514adcdb346!2s37%20Quai%20de%20Grenelle%2C%2075015%20Paris!5e0!3m2!1sfr!2sfr!4v1716902771892!5m2!1sfr!2sfr"
+                            width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </li>
+                <li>&copy; 2024 Agora Francia</li>
+            </ul>
+        </footer>
+    </div>
+</body>
+
+</html>
